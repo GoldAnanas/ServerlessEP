@@ -53,7 +53,7 @@ python3 setup.py install --user
 ```
 - Sur le site d'AWS, créer un rôle nommé *LambdaBasicExecution* (plus d'information [ici](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html)).
 - Créez un compte IAM et exportez le fichier *accessKeys.csv* contenant les informations de connexion (plus d'information [ici](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)).
-- Copiez le fichier *accessKeys.csv* dans le dossier *S2\pyLambdaFlow\Scheduling*.
+- Copiez le fichier *accessKeys.csv* dans le dossier *S2\Scheduling_with_PyLambdaFlow\Scheduling*.
 - Pour lancer l'application de planification d'emploi du temps parallélisée sur les serveurs d'AWS : 
 ``` bash
 python3 main_parallel_aws.py

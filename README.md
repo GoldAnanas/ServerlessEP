@@ -9,7 +9,7 @@ compte sur la plateforme afin de reproduire les différentes étapes présentée
 Tout d'abord, afin de récupère le code de nos fonctions, nous vous conseillons soit de télécharger directement les fichiers via le site Gitlab ou bien de cloner le git.
 
 ``` bash
-git clone https://gitlab.insa-rennes.fr/EPIS2019/main-project.git
+git clone https://github.com/GoldAnanas/ServerlessEP.git
 ```
 
 ## **Word Count parallélisé** (travail du semestre 1)

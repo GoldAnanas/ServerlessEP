@@ -6,7 +6,7 @@ compte sur la plateforme afin de reproduire les différentes étapes présentée
 
 ## **Clone Git**
 
-Tout d'abord, afin de récupère le code de nos fonctions, nous vous conseillons soit de télécharger directement les fichiers via le site Gitlab ou bien de cloner le git.
+Tout d'abord, afin de récupère le code de nos fonctions, nous vous conseillons soit de télécharger directement les fichiers via Github ou bien de cloner le git.
 
 ``` bash
 git clone https://github.com/GoldAnanas/ServerlessEP.git

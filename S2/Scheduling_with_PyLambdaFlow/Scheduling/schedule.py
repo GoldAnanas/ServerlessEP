@@ -14,11 +14,12 @@ class Schedule(object):
   def __str__(self):
     return "\n".join([str(x) for x in self._classes])
     
+  # Methode qui retourne le tableau de cours
   @property
   def classes(self):
     return self._classes
 
-  # Méthode qui remplit un schedule avec des classes (ces classes ont un meeting_time, un numero de salle et un prof aleatoire)
+  # Methode qui remplit un emploi du temps avec des cours (ces cours ont un meeting_time, un numero de salle et un prof aleatoire)
   def initialize(self):
     def _create_class(self, course, dept):
       _class = Class(id=self.class_number, department=dept, course=course)
@@ -36,7 +37,7 @@ class Schedule(object):
 
     return self
 
-  # Méthode d'évaluation (fitness)
+  # Methode d'évaluation (fitness correspond a l'inverse du nombre de conflits)
   def calculate_fitness(self):
     number_of_conflicts = 0
     for idx, _class in enumerate(self._classes):

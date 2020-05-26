@@ -1,5 +1,5 @@
-#On définit les élèments d'un emploi du temps (schedule) :
-#classe, cours, département, professeur, heure, salle
+# Definit les élèments d'un emploi du temps (schedule) :
+# cours, département, professeur, heure, salle
 class Class(object):
   def __init__(self, id, department, course):
     self.id = id

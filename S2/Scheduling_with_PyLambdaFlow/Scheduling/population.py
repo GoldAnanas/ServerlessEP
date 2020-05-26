@@ -16,6 +16,7 @@ class Population(object):
   def __str__(self):
     return "".join([str(x) for x in self.schedules])
 
+  # Methode de tri de la population par ordre decroissant de la fitness
   def sort_by_fitness(self):
     self.schedules = sorted(self.schedules, key= lambda schedule: schedule._fitness, reverse=True)
     return self

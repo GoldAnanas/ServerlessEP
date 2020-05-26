@@ -1,8 +1,9 @@
 from pyLambdaFlows.decorator import kernel
 
-# Ce kernel prend en entrée une sous population créée aléatoirement et le nombre d'élites à renvoyer
-# Il évalue ensuite chacun des individus (schedule)
-# Enfin, il renvoie le NUMB_OF_ELITES_SCHEDULES (de base 1)
+# Ce kernel prend en entree la liste des parametre envoye par le main
+# Il cree une population initiale
+# Il evalue ensuite chacun des individus (schedule)
+# Enfin, il renvoie la population
 
 from data import Data
 from population import Population   

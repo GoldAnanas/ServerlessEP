@@ -1,9 +1,9 @@
 import pyLambdaFlows
 
-sess = pyLambdaFlows.Session(credentials_csv="./PyFlow-user_Credentials.csv")
+# Permet de supprimer toutes les fonctions Lambda sur AWS
 
-#a = pyLambdaFlows.upload.Uploader(sess)
-#a.upload_lambda("./source/mean.py")
+sess = pyLambdaFlows.Session(credentials_csv="./accessKeys.csv")
+
 a = sess.getLambda()
 
 elements = a.list_functions()["Functions"]

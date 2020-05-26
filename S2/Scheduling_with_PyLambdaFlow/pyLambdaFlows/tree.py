@@ -62,7 +62,7 @@ class Tree():
             
             lambda_list = list()
             for element in feed_dict[node]:
-                lambda_list.append(InstanceNode(node.funct, pickle.dumps(element).hex(), self.curr_idx, None))
+                lambda_list.append(InstanceNode(node.funct, pickle.dumps(element,protocol=1).hex(), self.curr_idx, None))
                 self.curr_idx += 1
             self.treated[node] = lambda_list
             return 

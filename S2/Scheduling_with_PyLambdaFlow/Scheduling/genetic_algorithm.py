@@ -15,7 +15,7 @@ class GeneticAlgorithm(object):
   def evolve(self, population):
     return self.mutate_population(self.crossover_population(population))
 
-  # Cette methode permet de creer une nouvelle population (avec un facteur aleatoire de crossover)
+  # Cette methode permet de creer une nouvelle population avec un facteur aleatoire de crossover
   # Les elites de l'ancienne population sont gardees tel quel au debut du tableau des schedules
   def crossover_population(self, population):
     _cross_over_popluation = Population(size=len(population.schedules), data=self.data)
@@ -42,8 +42,8 @@ class GeneticAlgorithm(object):
       
     return _crossover_schedule
 
-  # La methode ci-dessous prend une population, et retourne la population mutee
-  # (avec les NUMB_OF_ELITE_SCHEDULES elites de l'ancienne population en premiere place)
+  # La methode ci-dessous prend une population et retourne la population mutee
+  # avec les NUMB_OF_ELITE_SCHEDULES elites de l'ancienne population en premiere place
   def mutate_population(self, population):
     _mutate_population = Population(size=len(population.schedules), data=self.data)
     

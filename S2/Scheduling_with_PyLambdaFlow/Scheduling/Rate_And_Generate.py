@@ -1,12 +1,12 @@
 import json
 import pickle
-from time import sleep,time
 import boto3 
 from pyLambdaFlows.decorator import kernel
 
-# Takes a population list
-# Generate new population from the best elites of all the subpopulation
-# Evaluate the new population created and sends it
+# Prend une liste de population en entree
+# Genere une nouvelle population avec les meilleurs elites des populations precedentes
+# Fait evoluer cette nouvelle population en local sur les serveurs d'AWS
+# Evalue cette nouvelle population et envoie des elites a la prochaine couche
 
 from data import Data
 from population import Population
@@ -14,41 +14,34 @@ from genetic_algorithm import GeneticAlgorithm
 
 @kernel 
 def lambda_handler(list_elites_schedules,param):
+   
+    # Recupere tous les emplois du temps des fonctions Lambda precedentes
     all_elites = []
-
     for schedules_list in list_elites_schedules:
         for schedule in schedules_list:
             all_elites.append(schedule)  
 
+    # Tri l'ensemble des emplois du temps par ordre decroissant de fitness
     sorted_list = sorted(all_elites, key= lambda schedule: schedule._fitness, reverse=True)
-    
-    """
-    print(len(sorted_list))
-    for i in range (len(sorted_list)):
-        print(sorted_list[i]._fitness)
-    """
 
+    # Creation de la population avec les elites des populations precedentes
     data = Data()
     newPop = Population(size=param[0][0],data=data, schedules=sorted_list)
-
-    """
-    print(len(newPop.schedules))
-    for i in range (len(newPop.schedules)):
-        print(newPop.schedules[i]._fitness)
-    """
-
     algo = GeneticAlgorithm(data=data,param=param[0]) 
       
-    for _ in range(param[0][6]):
+    # Evolution de la population en local sur les serveurs d'AWS
+    for _ in range(param[0][6]): # param[0][6]==NUMB_OF_GENERATION
         if(newPop.schedules[0]._fitness!=1.0):
             newPop = algo.evolve(population=newPop)
-            
+
             for schedule in newPop.schedules:
                 schedule._fitness=schedule.calculate_fitness()
+
             newPop.sort_by_fitness()
     
+    # Recupere les elites pour les retourner
     elites=[]
-    for i in range(param[0][5]): #param[0][5]==NUMB_OF_ELITES
+    for i in range(param[0][5]): # param[0][5]==NUMB_OF_ELITES
         elites.append(newPop.schedules[i])
     
     return elites

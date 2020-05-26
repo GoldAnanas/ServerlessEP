@@ -19,13 +19,13 @@ class Data(object):
     self.initialize()
   
   def initialize(self):
-    # create rooms
+    # Creation des salles
     room1 = Room(number="EAU", seating_capacity=25)
     room2 = Room(number="BORDEAUX", seating_capacity=45)
     room3 = Room(number="ECHIQUIER", seating_capacity=35)
     self.rooms = [room1, room2, room3]
 
-    # create meeting times
+    # Creation des horaires
     meeting_time1 = MeetingTime(id="MT1", time="MWF 08:00 - 10:00")
     meeting_time2 = MeetingTime(id="MT2", time="MWF 10:00 - 12:00")
     meeting_time3 = MeetingTime(id="MT3", time="TTH 08:00 - 10:00")
@@ -38,7 +38,7 @@ class Data(object):
       meeting_time4
     ]
 
-    # creating instructors
+    # Creation des professeurs
     instructor1 = Instructor(id="I1", name="Algo teacher")
     instructor2 = Instructor(id="I2", name="AI teacher")
     instructor3 = Instructor(id="I3", name="Network teacher")
@@ -47,7 +47,7 @@ class Data(object):
 
     self.instructors = [instructor1, instructor2, instructor3, instructor4, instructor5]
 
-    # create courses
+    # Creation des cours
     course1 = Course(number="C1", name="ALGO", max_number_of_students=25, instructors=[instructor1, instructor2])
     course2 = Course(number="C2", name="AI", max_number_of_students=35, instructors=[instructor1, instructor2, instructor3])
     course3 = Course(number="C3", name="SECURITY", max_number_of_students=25, instructors=[instructor2, instructor4])
@@ -62,12 +62,12 @@ class Data(object):
 
     self.courses = [course1, course2, course3, course4, course5, course6, course7, course8, course9, course10, course11]
 
-    # create departments
+    # Create departments
     department1 = Department(name="3 INFO", courses=[course1, course3, course8])
-    department2 = Department(name="4 INFO", courses=[course2, course4, course5, course10])
+    department2 = Department(name="4 INFO", courses=[course2, course4, course5, course11])
     department3 = Department(name="5 INFO", courses=[course6, course7, course9])
 
     self.depts = [department1, department2, department3]
 
-    # define the number of classes
+    # Definit le nombre de cours
     self.number_of_classes = sum([len(x.courses) for x in self.depts])
